@@ -1,0 +1,15 @@
+ayra/
+├── app.py                     # Main application
+├── .env.example               # Example environment variables
+├── requirements.txt           # Python dependencies
+├── README.md                  # This file
+├── memory.db                  # SQLite database (auto‑created)
+└── utils/
+    ├── __init__.py
+    ├── memory_manager.py      # SQLite operations
+    ├── mood_analyzer.py       # Sentiment analysis
+    ├── model_router.py        # Multi‑model routing
+    ├── prompts.py             # System prompts
+    ├── helpers.py             # Greetings, themes, Easter eggs
+    ├── location.py            # (Placeholder) future location services
+    └── voice.py               # (Placeholder) future voice I/O

@@ -1,0 +1,15 @@
+streamlit>=1.28.0
+google-generativeai>=0.3.0
+openai>=1.0.0                # for DeepSeek (OpenAI‑compatible) and Whisper
+anthropic>=0.7.0
+python-dotenv>=1.0.0
+pandas>=2.0.0
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+openpyxl>=3.1.0
+Pillow>=10.0.0
+requests>=2.31.0
+textblob>=0.17.1             # for improved sentiment analysis
+streamlit-audio-recorder>=0.1.0  # for voice input (optional)
+elevenlabs>=0.2.0            # for TTS (optional)
+chromadb>=0.4.22

@@ -8,7 +8,7 @@ class ModelRouter:
     def __init__(self):
         # Gemini only
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-        self.gemini_model = genai.GenerativeModel('gemini-1.5-flash')
+        self.gemini_model = genai.GenerativeModel('gemini-2.5-flash')
 
     def route(self, user_input, context, memory_profile=None):
         # Always use Gemini

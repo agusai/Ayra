@@ -1,9 +1,10 @@
+# utils/memory_manager.py
+# Version tanpa chroma - guna simple vault
+
 import sqlite3
 import json
 from datetime import datetime
-from .chroma_vault import ChromaVault
-
-from streamlit import cursor
+from .chroma_vault_simple import ChromaVault  # GUNA SIMPLE VERSION
 
 DB_PATH = "memory.db"
 
@@ -11,6 +12,7 @@ class MemoryManager:
     def __init__(self):
         self.conn = sqlite3.connect(DB_PATH, check_same_thread=False)
         self._create_tables()
+        # Guna simple vault
         self.vault = ChromaVault()
 
     def _create_tables(self):
@@ -26,22 +28,12 @@ class MemoryManager:
                 model_used TEXT
             )
         """)
-        # User profile (key-value)
+        # User profile
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS user_profile (
                 key TEXT PRIMARY KEY,
                 value TEXT,
                 updated_at TEXT
-            )
-        """)
-        # Social circle
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS social_circle (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                relationship TEXT,
-                last_topic TEXT,
-                last_mentioned TEXT
             )
         """)
         # Stories
@@ -62,7 +54,7 @@ class MemoryManager:
                 date TEXT
             )
         """)
-        # Stats / gamification
+        # Stats
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS user_stats (
                 key TEXT PRIMARY KEY,
@@ -71,7 +63,7 @@ class MemoryManager:
         """)
         self.conn.commit()
 
-    # ---------- Conversations ----------
+    # ===== CONVERSATIONS =====
     def save_interaction(self, user_msg, ayra_msg, mood_score=0.0, model_used="Gemini"):
         cursor = self.conn.cursor()
         cursor.execute(
@@ -79,6 +71,8 @@ class MemoryManager:
             (datetime.now().isoformat(), user_msg, ayra_msg, mood_score, model_used)
         )
         self.conn.commit()
+        # Juga simpan ke vault (simple version tak buat apa-apa)
+        self.vault.save_conversation(user_msg, ayra_msg, mood_score, model_used)
 
     def get_recent_conversations(self, limit=5):
         cursor = self.conn.cursor()
@@ -93,7 +87,7 @@ class MemoryManager:
             context.append({"role": "assistant", "content": ayra})
         return context
 
-    # ---------- User Profile ----------
+    # ===== USER PROFILE =====
     def get_profile(self, key):
         cursor = self.conn.cursor()
         cursor.execute("SELECT value FROM user_profile WHERE key = ?", (key,))
@@ -108,27 +102,7 @@ class MemoryManager:
         )
         self.conn.commit()
 
-    # ---------- Social Circle ----------
-    def add_or_update_person(self, name, relationship, last_topic):
-        cursor = self.conn.cursor()
-        cursor.execute(
-            """INSERT INTO social_circle (name, relationship, last_topic, last_mentioned)
-               VALUES (?, ?, ?, ?)
-               ON CONFLICT(name) DO UPDATE SET
-               relationship=excluded.relationship,
-               last_topic=excluded.last_topic,
-               last_mentioned=excluded.last_mentioned""",
-            (name, relationship, last_topic, datetime.now().isoformat())
-        )
-        self.conn.commit()
-
-    def get_social_circle(self):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT name, relationship, last_topic, last_mentioned FROM social_circle")
-        rows = cursor.fetchall()
-        return [{"name": r[0], "relationship": r[1], "last_topic": r[2], "last_mentioned": r[3]} for r in rows]
-
-    # ---------- Stories ----------
+    # ===== STORIES =====
     def save_story(self, title, content):
         cursor = self.conn.cursor()
         cursor.execute(
@@ -137,12 +111,6 @@ class MemoryManager:
         )
         self.conn.commit()
         return cursor.lastrowid
-
-    def get_story(self, story_id):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT title, content FROM stories WHERE id = ?", (story_id,))
-        row = cursor.fetchone()
-        return {"title": row[0], "content": row[1]} if row else None
 
     def get_latest_story(self):
         cursor = self.conn.cursor()
@@ -158,7 +126,7 @@ class MemoryManager:
         )
         self.conn.commit()
 
-    # ---------- Dreams ----------
+    # ===== DREAMS =====
     def save_dream(self, dream_text):
         cursor = self.conn.cursor()
         cursor.execute(
@@ -167,13 +135,7 @@ class MemoryManager:
         )
         self.conn.commit()
 
-    def get_random_dream(self):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT dream_text FROM dreams ORDER BY RANDOM() LIMIT 1")
-        row = cursor.fetchone()
-        return row[0] if row else None
-
-    # ---------- Stats / Gamification ----------
+    # ===== STATS =====
     def increment_stat(self, key, inc=1):
         cursor = self.conn.cursor()
         cursor.execute("INSERT OR IGNORE INTO user_stats (key, value) VALUES (?, 0)", (key,))
@@ -186,18 +148,8 @@ class MemoryManager:
         row = cursor.fetchone()
         return row[0] if row else 0
 
-    def set_stat(self, key, value):
-        cursor = self.conn.cursor()
-        cursor.execute("REPLACE INTO user_stats (key, value) VALUES (?, ?)", (key, value))
-        self.conn.commit()
-
-    def get_all_stats(self):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT key, value FROM user_stats")
-        return dict(cursor.fetchall())
-    
+    # ===== CRISIS LOG =====
     def log_crisis_event(self, user_message, detected_keyword):
-        """Log crisis events for audit purposes"""
         cursor = self.conn.cursor()
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS crisis_log (
@@ -214,26 +166,16 @@ class MemoryManager:
         )
         self.conn.commit()
 
+    # ===== SIMPLE VAULT METHODS (untuk compatibility) =====
     def save_to_vault(self, user_msg, ayra_msg, mood_score=0.0, model_used="Gemini", is_important=False):
-        """Save conversation to ChromaVault (long-term memory)"""
-        return self.vault.save_conversation(user_msg, ayra_msg, mood_score, model_used, is_important)
+        # Simple version - tak buat apa-apa
+        pass
 
     def search_memories(self, query, n_results=5):
-        """Search for relevant memories"""
-        return self.vault.search_memories(query, n_results)
+        return []
 
     def get_important_memories(self, limit=5):
-        """Get important memories"""
-        return self.vault.get_important_memories(limit)
-
-    def save_story_to_vault(self, title, content, story_id=None):
-        """Save story to vault"""
-        return self.vault.save_story(title, content, story_id)
-
-    def save_dream_to_vault(self, dream_text):
-        """Save dream to vault"""
-        return self.vault.save_dream(dream_text)
+        return []
 
     def get_vault_stats(self):
-        """Get vault statistics"""
-        return self.vault.get_stats()
+        return {'total_memories': 0}

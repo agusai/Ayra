@@ -58,7 +58,7 @@ st.markdown(f"""
 
     /* Fix untuk text visibility */
     .stApp, .stApp * {{
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5) !important;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
     }}
 
     /* Cantikkan Kotak Chat */

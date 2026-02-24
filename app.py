@@ -63,7 +63,7 @@ st.markdown(f"""
 
     /* Cantikkan Kotak Chat */
     .stChatMessage {{ 
-        background-color: rgba(30, 30, 30, 0.8); 
+        background-color: rgba(60, 60, 70, 0.9); 
         backdrop-filter: blur(5px); /* Efek kaca */
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 15px; 

@@ -45,6 +45,7 @@ st.set_page_config(page_title="AYRA - Soulful Malaysian AI", page_icon="✨")
 theme_css = get_ui_theme(st.session_state.mood_score, st.session_state.fatigue)
 st.markdown(f"""
 <style>
+    
     /* Background Dinamik Abang */
     .stApp {{ 
         background: {theme_css}; 
@@ -56,9 +57,9 @@ st.markdown(f"""
     #MainMenu {{visibility: hidden;}}
 
     /* Fix untuk text visibility */
-    .stApp, .stApp * {
+    .stApp, .stApp * {{
         text-shadow: 1px 1px 3px rgba(0,0,0,0.5) !important;
-    }
+    }}
 
     /* Cantikkan Kotak Chat */
     .stChatMessage {{ 
@@ -85,71 +86,71 @@ st.markdown(f"""
 
     /* ===== SIDEBAR FIX ===== */
     /* Pastikan sidebar text nampak */
-    [data-testid="stSidebar"] {
+    [data-testid="stSidebar"] {{
         background-color: rgba(20, 20, 30, 0.95) !important;
-    }
+    }}
 
-    [data-testid="stSidebar"] * {
+    [data-testid="stSidebar"] * {{
         color: #FFFFFF !important;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
-    }
+    }}
 
     /* Metric boxes dalam sidebar */
-    [data-testid="stSidebar"] .stMetric {
+    [data-testid="stSidebar"] .stMetric {{
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         padding: 10px;
         margin: 5px 0;
-    }
+    }}
 
     /* Button dalam sidebar */
-    [data-testid="stSidebar"] .stButton button {
+    [data-testid="stSidebar"] .stButton button {{
         background-color: #D4AF37;
         color: black !important;
         font-weight: bold;
-    }
+    }}
 
     /* Divider */
-    [data-testid="stSidebar"] hr {
+    [data-testid="stSidebar"] hr {{
         border-color: rgba(255,255,255,0.2);
-    }
+    }}
 
     /* Expander */
-    [data-testid="stSidebar"] .streamlit-expanderHeader {
+    [data-testid="stSidebar"] .streamlit-expanderHeader {{
         color: #FFFFFF !important;
         background-color: rgba(255,255,255,0.05);
         border-radius: 8px;
-    }
+    }}
 
-    [data-testid="stSidebar"] .streamlit-expanderContent {
+    [data-testid="stSidebar"] .streamlit-expanderContent {{
         background-color: rgba(0,0,0,0.2);
         border-radius: 0 0 8px 8px;
-    }
+    }}
 
     /* Radio buttons dalam sidebar */
-    [data-testid="stSidebar"] .stRadio label {
+    [data-testid="stSidebar"] .stRadio label {{
         color: #FFFFFF !important;
-    }
+    }}
 
     /* Text input dalam sidebar */
-    [data-testid="stSidebar"] .stTextInput input {
+    [data-testid="stSidebar"] .stTextInput input {{
         background-color: rgba(255,255,255,0.9);
         color: #000000 !important;
-    }
+    }}
 
     /* Code block dalam sidebar */
-    [data-testid="stSidebar"] code {
+    [data-testid="stSidebar"] code {{
         background-color: rgba(0,0,0,0.5);
         color: #FFD700 !important;
         padding: 2px 5px;
         border-radius: 5px;
-    }
+    }}
 
     /* Caption */
-    [data-testid="stSidebar"] .stCaption {
+    [data-testid="stSidebar"] .stCaption {{
         color: rgba(255,255,255,0.8) !important;
         font-style: italic;
-    }
+    }}
 </style>
 """, unsafe_allow_html=True)
 

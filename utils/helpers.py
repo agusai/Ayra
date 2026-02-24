@@ -1,6 +1,5 @@
-import pytz
 from datetime import datetime
-import datetime
+import pytz
 import random
 
 # -------------------------------------------------------------------
@@ -12,7 +11,6 @@ def get_greeting():
     hour = now.hour
     current_date = now.strftime("%d %B %Y")
     current_time = now.strftime("%I:%M %p")
-    hour = now.hour
     month = now.month
     day = now.day
 

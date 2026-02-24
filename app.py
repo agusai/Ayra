@@ -1,5 +1,3 @@
-from tkinter import font
-
 from PIL.IcnsImagePlugin import size
 import streamlit as st
 import time

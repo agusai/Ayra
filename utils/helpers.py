@@ -1,3 +1,5 @@
+import pytz
+from datetime import datetime
 import datetime
 import random
 
@@ -5,7 +7,11 @@ import random
 # Time‑based greetings (with Ramadan awareness)
 # -------------------------------------------------------------------
 def get_greeting():
-    now = datetime.datetime.now()
+    malaysia_tz = pytz.timezone('Asia/Kuala_Lumpur')
+    now = datetime.now(malaysia_tz)
+    hour = now.hour
+    current_date = now.strftime("%d %B %Y")
+    current_time = now.strftime("%I:%M %p")
     hour = now.hour
     month = now.month
     day = now.day
@@ -24,23 +30,24 @@ def get_greeting():
             return "Selamat berpuasa! Ada apa AYRA boleh tolong?"
     else:
         if 5 <= hour < 11:
-            return "Selamat pagi, awak! Dah sarapan?"
+            return f"Selamat pagi, awak! Dah sarapan?(Sekarang {current_time})"
         elif 11 <= hour < 14:
-            return "Jom lunch! Lapar tak?"
+            return f"Jom lunch! Lapar tak?(Sekarang {current_time})"
         elif 14 <= hour < 17:
-            return "Selamat petang! Camne hari ni?"
+            return f"Selamat petang! Camne hari ni?(Sekarang {current_time})"
         elif 17 <= hour < 19:
-            return "Dah nak maghrib, jangan lupa solat."
+            return f"Dah nak maghrib, jangan lupa solat.(Sekarang {current_time})"
         elif 19 <= hour < 23:
-            return "Selamat malam! Ada apa-apa?"
+            return f"Selamat malam! Ada apa-apa?(Sekarang {current_time})"
         else:
-            return "Wah, still bangun? Jaga kesihatan tau."
+            return f"Wah, still bangun? Jaga kesihatan tau.(Sekarang {current_time})"
 
 # -------------------------------------------------------------------
 # Dynamic UI theme
 # -------------------------------------------------------------------
 def get_ui_theme(mood_score=None, fatigue=False):
-    now = datetime.datetime.now()
+    malaysia_tz = pytz.timezone('Asia/Kuala_Lumpur')
+    now = datetime.now(malaysia_tz)
     hour = now.hour
 
     if 5 <= hour < 7:

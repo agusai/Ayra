@@ -68,7 +68,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "INSERT INTO conversations (timestamp, user_message, ayra_response, mood_score, model_used) VALUES (?, ?, ?, ?, ?)",
-            (datetime.now().isoformat(), user_msg, ayra_msg, mood_score, model_used)
+            (datetime.now(malaysia_tz).isoformat(), user_msg, ayra_msg, mood_score, model_used)
         )
         self.conn.commit()
         # Juga simpan ke vault (simple version tak buat apa-apa)
@@ -98,7 +98,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "REPLACE INTO user_profile (key, value, updated_at) VALUES (?, ?, ?)",
-            (key, value, datetime.now().isoformat())
+            (key, value, datetime.now(malaysia_tz).isoformat())
         )
         self.conn.commit()
 
@@ -107,7 +107,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "INSERT INTO stories (title, content, created_at, last_continued) VALUES (?, ?, ?, ?)",
-            (title, content, datetime.now().isoformat(), datetime.now().isoformat())
+            (title, content, datetime.now(malaysia_tz).isoformat(), datetime.now(malaysia_tz).isoformat())
         )
         self.conn.commit()
         return cursor.lastrowid
@@ -122,7 +122,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "UPDATE stories SET content = content || ? , last_continued = ? WHERE id = ?",
-            (new_content, datetime.now().isoformat(), story_id)
+            (new_content, datetime.now(malaysia_tz).isoformat(), story_id)
         )
         self.conn.commit()
 
@@ -131,7 +131,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "INSERT INTO dreams (dream_text, date) VALUES (?, ?)",
-            (dream_text, datetime.now().isoformat())
+            (dream_text, datetime.now(malaysia_tz).isoformat())
         )
         self.conn.commit()
 
@@ -162,7 +162,7 @@ class MemoryManager:
         """)
         cursor.execute(
             "INSERT INTO crisis_log (timestamp, user_message, detected_keyword) VALUES (?, ?, ?)",
-            (datetime.now().isoformat(), user_message[:200], detected_keyword)
+            (datetime.now(malaysia_tz).isoformat(), user_message[:200], detected_keyword)
         )
         self.conn.commit()
 

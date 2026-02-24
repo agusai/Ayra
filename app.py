@@ -110,7 +110,7 @@ with st.sidebar:
     st.divider()
     st.subheader("👨‍💻 Uncle Jiji's Something...")
     st.write("Cuba taip ni kalau nak 'surprise':")
-    st.code("/ais-krim /penat /cerita /sambung /mood /level /badges /dream /food /trending")
+    st.code("/ais-krim 🍦 /penat 😮‍💨 /cerita 📖 /sambung 🔄 /mood 😊 /level 📊 /badges 🏅 /dream 🌙 /food 🍜 /trending 📈")
     st.caption("Jangan tanya apa, just try! 😉")
 
     st.divider()

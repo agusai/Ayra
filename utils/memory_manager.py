@@ -3,7 +3,9 @@
 
 import sqlite3
 import json
+import pytz
 from datetime import datetime
+MALAYSIA_TZ = pytz.timezone('Asia/Kuala_Lumpur')
 from .chroma_vault_simple import ChromaVault  # GUNA SIMPLE VERSION
 
 DB_PATH = "memory.db"
@@ -68,7 +70,7 @@ class MemoryManager:
         cursor = self.conn.cursor()
         cursor.execute(
             "INSERT INTO conversations (timestamp, user_message, ayra_response, mood_score, model_used) VALUES (?, ?, ?, ?, ?)",
-            (datetime.now(malaysia_tz).isoformat(), user_msg, ayra_msg, mood_score, model_used)
+            (datetime.now(MALAYSIA_TZ).isoformat(), user_msg, ayra_msg, mood_score, model_used)
         )
         self.conn.commit()
         # Juga simpan ke vault (simple version tak buat apa-apa)

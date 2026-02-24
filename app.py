@@ -152,22 +152,21 @@ st.markdown(f"""
         font-style: italic;
 
     /* KECILKAN LABEL DALAM METRIC */
-    [data-testid="stSidebar"] .stMetric label {
+    [data-testid="stSidebar"] .stMetric label {{
         font-size: 0.8rem !important;
         opacity: 0.8 !important;
-    }
+    }}
 
     /* KECILKAN NILAI METRIC (angka) - optional */
-    [data-testid="stSidebar"] .stMetric [data-testid="stMetricValue"] {
+    [data-testid="stSidebar"] .stMetric [data-testid="stMetricValue"] {{
         font-size: 1.2rem !important;
-    }
+    }}
 
     /* KALAU NAK KECILKAN LAGI 'Kawan Baru' & 'Neutral' */
-    [data-testid="stSidebar"] .stMetric .stCaption {
+    [data-testid="stSidebar"] .stMetric .stCaption {{
         font-size: 0.7rem !important;
-    }
-    
     }}
+    
 </style>
 """, unsafe_allow_html=True)
 

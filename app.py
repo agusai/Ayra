@@ -65,11 +65,11 @@ st.markdown(f"""
     .stChatMessage {{ 
         background-color: rgba(60, 60, 70, 0.9); 
         backdrop-filter: blur(5px); /* Efek kaca */
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 15px; 
         padding: 12px; 
         margin-bottom: 12px;
-        box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
     }}
 
     /* Kotak Input (Bawah) */

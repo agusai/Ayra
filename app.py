@@ -1,3 +1,5 @@
+from turtle import color
+
 import streamlit as st
 import time
 from datetime import datetime
@@ -55,13 +57,18 @@ st.markdown(f"""
     header, footer {{visibility: hidden !important;}}
     #MainMenu {{visibility: hidden;}}
 
+    /* Fix untuk text visibility */
+    .stApp, .stApp * {
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5) !important;
+    }
+
     /* Cantikkan Kotak Chat */
     .stChatMessage {{ 
-        background-color: rgba(255, 255, 255, 0.15); 
+        background-color: rgba(30, 30, 30, 0.8); 
         backdrop-filter: blur(5px); /* Efek kaca */
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px; 
-        padding: 15px; 
+        border-radius: 15px; 
+        padding: 12px; 
         margin-bottom: 12px;
         box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
     }}
@@ -77,6 +84,74 @@ st.markdown(f"""
         font-weight: 800;
         letter-spacing: -1px;
     }}
+
+    /* ===== SIDEBAR FIX ===== */
+    /* Pastikan sidebar text nampak */
+    [data-testid="stSidebar"] {
+        background-color: rgba(20, 20, 30, 0.95) !important;
+    }
+
+    [data-testid="stSidebar"] * {
+        color: #FFFFFF !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    }
+
+    /* Metric boxes dalam sidebar */
+    [data-testid="stSidebar"] .stMetric {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+
+    /* Button dalam sidebar */
+    [data-testid="stSidebar"] .stButton button {
+        background-color: #D4AF37;
+        color: black !important;
+        font-weight: bold;
+    }
+
+    /* Divider */
+    [data-testid="stSidebar"] hr {
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Expander */
+    [data-testid="stSidebar"] .streamlit-expanderHeader {
+        color: #FFFFFF !important;
+        background-color: rgba(255,255,255,0.05);
+        border-radius: 8px;
+    }
+
+    [data-testid="stSidebar"] .streamlit-expanderContent {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 0 0 8px 8px;
+    }
+
+    /* Radio buttons dalam sidebar */
+    [data-testid="stSidebar"] .stRadio label {
+        color: #FFFFFF !important;
+    }
+
+    /* Text input dalam sidebar */
+    [data-testid="stSidebar"] .stTextInput input {
+        background-color: rgba(255,255,255,0.9);
+        color: #000000 !important;
+    }
+
+    /* Code block dalam sidebar */
+    [data-testid="stSidebar"] code {
+        background-color: rgba(0,0,0,0.5);
+        color: #FFD700 !important;
+        padding: 2px 5px;
+        border-radius: 5px;
+    }
+
+    /* Caption */
+    [data-testid="stSidebar"] .stCaption {
+        color: rgba(255,255,255,0.8) !important;
+        font-style: italic;
+    }
 </style>
 """, unsafe_allow_html=True)
 

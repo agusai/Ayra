@@ -24,7 +24,7 @@ def get_greeting():
             return "Selamat berpuasa! Ada apa AYRA boleh tolong?"
     else:
         if 5 <= hour < 11:
-            return "Selamat pagi, Abang/Sayang! Dah sarapan?"
+            return "Selamat pagi, awak! Dah sarapan?"
         elif 11 <= hour < 14:
             return "Jom lunch! Lapar tak?"
         elif 14 <= hour < 17:
@@ -93,7 +93,7 @@ def handle_easter_egg(command, memory=None):
                 "Rehat dulu sayang. Nak AYRA bacakan doa? Atau nak ubat virtual? 💊")
     elif cmd == "/cerita":
         # Start a new story
-        return ("📖 AYRA: Pada suatu masa di Kuala Lumpur, ada seorang hero bernama [Abang/Sayang] yang sangat baik hati. "
+        return ("📖 AYRA: Pada suatu masa di Kuala Lumpur, ada seorang hero bernama [awak] yang sangat baik hati. "
                 "Satu hari, masa lalu di Jalan Alor, terjumpa satu gerai misteri... Nak sambung cerita? Taip /sambung")
     elif cmd == "/sambung":
         # Continue last story – need memory
@@ -124,9 +124,9 @@ def handle_easter_egg(command, memory=None):
             else:
                 # Generate a new dream and save it
                 dreams = [
-                    "🌙 Semalam AYRA mimpi pelik – abang jadi superhero pakai baju Melayu, terbang kat atas KLCC!",
+                    "🌙 Semalam AYRA mimpi pelik – awak jadi superhero pakai baju Melayu, terbang kat atas KLCC!",
                     "🌙 AYRA mimpi kat Malaysia menang Piala Dunia! AYRA sorak sampai hilang suara.",
-                    "🌙 Dalam mimpi, AYRA dengan abang pegi bazaar ramadan, tapi semua orang jual virtual reality games.",
+                    "🌙 Dalam mimpi, AYRA dengan awak pegi bazaar ramadan, tapi semua orang jual virtual reality games.",
                     "🌙 AYRA mimpi jadi Perdana Menteri sehari. AYRA bagi ucapan pakai baju kurung power!"
                 ]
                 dream = random.choice(dreams)

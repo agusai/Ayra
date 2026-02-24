@@ -39,7 +39,7 @@ if "current_story_id" not in st.session_state:
 # -------------------------------------------------------------------
 # UI Setup
 # -------------------------------------------------------------------
-st.set_page_config(page_title="AYRA 2.0 - Soulful Malaysian AI", page_icon="✨")
+st.set_page_config(page_title="AYRA - Soulful Malaysian AI", page_icon="✨")
 
 # Dynamic theme
 theme_css = get_ui_theme(st.session_state.mood_score, st.session_state.fatigue)
@@ -80,12 +80,12 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("✨ AYRA 2.0 – Your Soulful Malaysian AI Partner")
+st.title("✨ AYRA")
 st.caption(get_greeting())
 
 # Sidebar
 with st.sidebar:
-    st.header("AYRA 2.0")
+    st.header("AYRA")
 
     # Level and stats
     msg_count = st.session_state.memory.get_stat("total_messages")
@@ -218,7 +218,7 @@ if prompt := st.chat_input("Type your message..."):
     from utils.crisis_detector import detect_crisis, format_crisis_response, contains_crisis_keywords
     
     # Get user's name from memory if available
-    user_name = st.session_state.memory.get_profile("name") or "Abang/Sayang"
+    user_name = st.session_state.memory.get_profile("name") or "awak"
     
     # Check for crisis
     is_crisis, keyword = detect_crisis(prompt)
@@ -258,7 +258,7 @@ if prompt := st.chat_input("Type your message..."):
             if now > st.session_state.fatigue_until:
                 st.session_state.fatigue = False
             else:
-                response = "AYRA: Kejap eh Bang, Ayra nak 'recharge' jap. Abang pun pergilah rehat, asyik tengok skrin jer!"
+                response = "AYRA: Kejap eh awak, Ayra nak 'recharge' jap. awak pun pergilah rehat, asyik tengok skrin jer!"
                 model_used = "Fatigue"
                 # Log but skip model
                 st.session_state.chat_history.append({"role": "assistant", "content": response})
@@ -272,7 +272,7 @@ if prompt := st.chat_input("Type your message..."):
             if time_window < 120:  # 5 messages in 2 minutes
                 st.session_state.fatigue = True
                 st.session_state.fatigue_until = now + 300
-                response = "AYRA: Kejap eh Bang, Ayra nak 'recharge' jap. Abang pun pergilah rehat, asyik tengok skrin jer!"
+                response = "AYRA: Kejap eh awak, Ayra nak 'recharge' jap. awak pun pergilah rehat, asyik tengok skrin jer!"
                 model_used = "Fatigue"
                 st.session_state.chat_history.append({"role": "assistant", "content": response})
                 st.session_state.memory.save_interaction(prompt, response, st.session_state.mood_score, model_used)

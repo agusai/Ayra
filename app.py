@@ -108,10 +108,10 @@ with st.sidebar:
         st.rerun()
 
     st.divider()
-    st.subheader("Easter Eggs")
-    st.write("`/ais-krim` · `/penat` · `/cerita` · `/sambung` · `/mood` · `/level` · `/badges` · `/dream` · `/food` · `/trending`")
-    st.divider()
-    st.caption("Made with ❤️ in Malaysia")
+    st.subheader("👨‍💻 Uncle Jiji's Something...")
+    st.write("Cuba taip ni kalau nak 'surprise':")
+    st.code("/ais-krim /penat /cerita /sambung /mood /level /badges /dream /food /trending")
+    st.caption("Jangan tanya apa, just try! 😉")
 
     st.divider()
     with st.expander("📁 Upload File untuk Analisis"):
@@ -142,6 +142,22 @@ with st.sidebar:
                 st.session_state.analysis_option = analysis_option
                 st.session_state.custom_q = custom_q
                 st.session_state.analyze_file = True
+
+    st.divider()
+    st.markdown("📝 **Bagi feedback?**")
+    st.markdown("[Klik sini](https://forms.gle/jfzyLqPx94oWs1du6) — tolong kami improve AYRA! 🙏")
+
+    st.divider()
+    with st.expander("🔬 Public Testing Notice"):
+        st.markdown("""
+        - AYRA masih dalam **fasa ujian awam**
+        - Respons mungkin tidak 100% tepat
+        - Jangan kongsi maklumat peribadi sensitif
+        - Jika dalam krisis, hubungi:
+            - Befrienders KL: **03-7627 2929** (24 jam)
+            - Talian Kasih: **15999** (24 jam)
+        - Maklum balas amat dialu-alukan! 🌸
+        """)
 
 # Display chat history
 for msg in st.session_state.chat_history:

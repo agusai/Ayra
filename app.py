@@ -41,137 +41,233 @@ if "current_story_id" not in st.session_state:
 # -------------------------------------------------------------------
 st.set_page_config(page_title="AYRA - Soulful Malaysian AI", page_icon="✨")
 
-# Dynamic theme
-theme_css = get_ui_theme(st.session_state.mood_score, st.session_state.fatigue)
 st.markdown(f"""
 <style>
+    /* ===== MIDNIGHT GOLD & COSMIC SOUL ===== */
     
-    /* Background Dinamik Abang */
-    .stApp {{ 
-        background: {theme_css}; 
-        transition: background 1.0s ease; 
+    /* IMPORT FONTS */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    /* ===== BACKGROUND COSMIC ===== */
+    .stApp {{
+        background-color: #0F1A24 !important;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 90% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 35%) !important;
     }}
 
-    /* Sembunyikan Header & Footer (Bagi nampak macam Real App) */
-    header, footer {{visibility: hidden !important;}}
-    #MainMenu {{visibility: hidden;}}
-
-    /* Fix untuk text visibility */
-    .stApp, .stApp * {{
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
+    /* ===== GLOBAL TEXT ===== */
+    * {{
+        font-family: 'Inter', sans-serif !important;
+        color: #FFFFFF !important;
     }}
 
-    /* Cantikkan Kotak Chat */
-    .stChatMessage {{ 
-        background-color: rgba(120,120,130, 0.9); 
-        backdrop-filter: blur(5px); /* Efek kaca */
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 15px; 
-        padding: 12px; 
-        margin-bottom: 12px;
-        box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+    /* ===== BANNER AYRA ===== */
+    .banner-ayra {{
+        text-align: center;
+        margin: 20px auto 5px auto;
     }}
 
-    /* Kotak Input (Bawah) */
-    .stChatInputContainer {{
-        padding-bottom: 20px;
-    }}
-    
-    /* Font Title bagi nampak premium */
-    h1 {{
-        font-family: 'Inter', sans-serif;
-        font-weight: 800;
-        letter-spacing: -1px;
+    .banner-ayra h1 {{
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 2.5rem !important;
+        background: linear-gradient(135deg, #FFD700, #FFFFFF) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 5px !important;
     }}
 
-    /* ===== SIDEBAR FIX ===== */
-    /* Pastikan sidebar text nampak */
+    /* ===== GREETING MESSAGE ===== */
+    .greeting-box {{
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.3) !important;
+        border-radius: 15px !important;
+        padding: 12px 20px !important;
+        margin: 10px auto 25px auto !important;
+        max-width: 800px !important;
+        text-align: center !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+    }}
+
+    /* ===== SIDEBAR COSMIC ===== */
     [data-testid="stSidebar"] {{
-        background-color: rgba(20, 20, 30, 0.95) !important;
+        background-color: rgba(10, 15, 20, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-right: 1px solid rgba(255, 215, 0, 0.2) !important;
     }}
 
     [data-testid="stSidebar"] * {{
         color: #FFFFFF !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
     }}
 
-    /* Metric boxes dalam sidebar */
-    [data-testid="stSidebar"] .stMetric {{
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        padding: 10px;
-        margin: 5px 0;
+    /* Stats cards */
+    .stMetric {{
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 215, 0, 0.2) !important;
+        border-radius: 15px !important;
+        padding: 12px !important;
+        margin: 8px 0 !important;
+        backdrop-filter: blur(5px);
     }}
 
-    /* Button dalam sidebar */
-    [data-testid="stSidebar"] .stButton button {{
-        background-color: #D4AF37;
-        color: black !important;
-        font-weight: bold;
-    }}
-
-    /* Divider */
-    [data-testid="stSidebar"] hr {{
-        border-color: rgba(255,255,255,0.2);
-    }}
-
-    /* Expander */
-    [data-testid="stSidebar"] .streamlit-expanderHeader {{
-        color: #FFFFFF !important;
-        background-color: rgba(255,255,255,0.05);
-        border-radius: 8px;
-    }}
-
-    [data-testid="stSidebar"] .streamlit-expanderContent {{
-        background-color: rgba(0,0,0,0.2);
-        border-radius: 0 0 8px 8px;
-    }}
-
-    /* Radio buttons dalam sidebar */
-    [data-testid="stSidebar"] .stRadio label {{
-        color: #FFFFFF !important;
-    }}
-
-    /* Text input dalam sidebar */
-    [data-testid="stSidebar"] .stTextInput input {{
-        background-color: rgba(255,255,255,0.9);
-        color: #000000 !important;
-    }}
-
-    /* Code block dalam sidebar */
-    [data-testid="stSidebar"] code {{
-        background-color: rgba(0,0,0,0.5);
+    .stMetric label {{
         color: #FFD700 !important;
-        padding: 2px 5px;
-        border-radius: 5px;
+        font-size: 0.75rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        font-weight: 600 !important;
     }}
 
-    /* Caption */
-    [data-testid="stSidebar"] .stCaption {{
-        color: rgba(255,255,255,0.8) !important;
-        font-style: italic;
-
-    /* KECILKAN LABEL DALAM METRIC */
-    [data-testid="stSidebar"] .stMetric label {{
-        font-size: 0.8rem !important;
-        opacity: 0.8 !important;
+    .stMetric [data-testid="stMetricValue"] {{
+        color: #FFFFFF !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
     }}
 
-    /* KECILKAN NILAI METRIC (angka) - optional */
-    [data-testid="stSidebar"] .stMetric [data-testid="stMetricValue"] {{
-        font-size: 1.2rem !important;
+    /* ===== CHAT MESSAGES - GLASSMORPHISM ===== */
+    .stChatMessage {{
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.3) !important;
+        border-radius: 20px !important;
+        padding: 12px 16px !important;
+        margin-bottom: 12px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
     }}
 
-    /* KALAU NAK KECILKAN LAGI 'Kawan Baru' & 'Neutral' */
-    [data-testid="stSidebar"] .stMetric .stCaption {{
-        font-size: 0.7rem !important;
+    .stChatMessage * {{
+        color: #FFFFFF !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
     }}
-    
+
+    /* User vs assistant indicator */
+    .stChatMessage[data-testid="user"] {{
+        border-left: 4px solid #FFD700 !important;
+    }}
+
+    .stChatMessage[data-testid="assistant"] {{
+        border-right: 4px solid #FFD700 !important;
+    }}
+
+    /* ===== INPUT BOX ===== */
+    .stChatInputContainer {{
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: rgba(15, 26, 36, 0.95) !important;
+        backdrop-filter: blur(10px);
+        padding: 12px 15px !important;
+        border-top: 1px solid rgba(255, 215, 0, 0.2) !important;
+        z-index: 999 !important;
+    }}
+
+    .stChatInputContainer input {{
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #FFFFFF !important;
+        border: 1px solid rgba(255, 215, 0, 0.3) !important;
+        border-radius: 30px !important;
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+        backdrop-filter: blur(5px);
+    }}
+
+    .stChatInputContainer input:focus {{
+        border-color: #FFD700 !important;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3) !important;
+    }}
+
+    /* ===== BUTTONS ===== */
+    .stButton button {{
+        background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+        color: #000000 !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        border: none !important;
+        border-radius: 25px !important;
+        padding: 8px 20px !important;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+        transition: all 0.3s ease !important;
+    }}
+
+    .stButton button:hover {{
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5) !important;
+    }}
+
+    /* ===== BOTTOM BAR (optional) ===== */
+    .bottom-bar {{
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(15, 26, 36, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 40px;
+        padding: 8px 20px;
+        display: flex;
+        gap: 20px;
+        font-size: 1.8rem;
+        z-index: 998;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }}
+
+    .bottom-bar span {{
+        cursor: pointer;
+        transition: transform 0.2s;
+    }}
+
+    .bottom-bar span:hover {{
+        transform: scale(1.2);
+    }}
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {{
+        width: 6px;
+    }}
+
+    ::-webkit-scrollbar-track {{
+        background: rgba(255, 255, 255, 0.05);
+    }}
+
+    ::-webkit-scrollbar-thumb {{
+        background: rgba(255, 215, 0, 0.3);
+        border-radius: 3px;
+    }}
+
+    ::-webkit-scrollbar-thumb:hover {{
+        background: rgba(255, 215, 0, 0.5);
+    }}
 </style>
 """, unsafe_allow_html=True)
 
-st.title("✨ AYRA")
-st.caption(get_greeting())
+
+# BANNER AYRA - SIMPLE TENGAH
+    st.markdown("""
+    <div class="banner-ayra">
+        <h1>AYRA</h1>
+    </div>
+    """, unsafe_allow_html=True)
+
+# GREETING
+    greeting_msg = get_greeting()
+    st.markdown(f"""
+    <div class="greeting-box">
+        {greeting_msg}
+    </div>
+    """, unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:

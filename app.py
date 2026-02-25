@@ -45,10 +45,8 @@ st.markdown(f"""
 <style>
     /* ===== MIDNIGHT GOLD & COSMIC SOUL ===== */
     
-    /* IMPORT FONTS */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-    /* ===== BACKGROUND COSMIC ===== */
     .stApp {{
         background-color: #0F1A24 !important;
         background-image: 
@@ -58,13 +56,11 @@ st.markdown(f"""
             radial-gradient(circle at 90% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 35%) !important;
     }}
 
-    /* ===== GLOBAL TEXT ===== */
     * {{
         font-family: 'Inter', sans-serif !important;
         color: #FFFFFF !important;
     }}
 
-    /* ===== BANNER AYRA ===== */
     .banner-ayra {{
         text-align: center;
         margin: 20px auto 5px auto;
@@ -83,7 +79,6 @@ st.markdown(f"""
         margin-bottom: 5px !important;
     }}
 
-    /* ===== GREETING MESSAGE ===== */
     .greeting-box {{
         background: rgba(255, 255, 255, 0.05) !important;
         backdrop-filter: blur(10px);
@@ -98,7 +93,6 @@ st.markdown(f"""
         box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
     }}
 
-    /* ===== SIDEBAR COSMIC ===== */
     [data-testid="stSidebar"] {{
         background-color: rgba(10, 15, 20, 0.95) !important;
         backdrop-filter: blur(10px);
@@ -109,7 +103,6 @@ st.markdown(f"""
         color: #FFFFFF !important;
     }}
 
-    /* Stats cards */
     .stMetric {{
         background: rgba(255, 255, 255, 0.03) !important;
         border: 1px solid rgba(255, 215, 0, 0.2) !important;
@@ -134,7 +127,6 @@ st.markdown(f"""
         line-height: 1.2 !important;
     }}
 
-    /* ===== CHAT MESSAGES - GLASSMORPHISM ===== */
     .stChatMessage {{
         background: rgba(255, 255, 255, 0.05) !important;
         backdrop-filter: blur(10px);
@@ -151,7 +143,6 @@ st.markdown(f"""
         line-height: 1.5 !important;
     }}
 
-    /* User vs assistant indicator */
     .stChatMessage[data-testid="user"] {{
         border-left: 4px solid #FFD700 !important;
     }}
@@ -160,7 +151,6 @@ st.markdown(f"""
         border-right: 4px solid #FFD700 !important;
     }}
 
-    /* ===== INPUT BOX ===== */
     .stChatInputContainer {{
         position: fixed !important;
         bottom: 0 !important;
@@ -188,7 +178,6 @@ st.markdown(f"""
         box-shadow: 0 0 15px rgba(255, 215, 0, 0.3) !important;
     }}
 
-    /* ===== BUTTONS ===== */
     .stButton button {{
         background: linear-gradient(135deg, #FFD700, #FFA500) !important;
         color: #000000 !important;
@@ -206,34 +195,6 @@ st.markdown(f"""
         box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5) !important;
     }}
 
-    /* ===== BOTTOM BAR (optional) ===== */
-    .bottom-bar {{
-        position: fixed;
-        bottom: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(15, 26, 36, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        border-radius: 40px;
-        padding: 8px 20px;
-        display: flex;
-        gap: 20px;
-        font-size: 1.8rem;
-        z-index: 998;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }}
-
-    .bottom-bar span {{
-        cursor: pointer;
-        transition: transform 0.2s;
-    }}
-
-    .bottom-bar span:hover {{
-        transform: scale(1.2);
-    }}
-
-    /* ===== SCROLLBAR ===== */
     ::-webkit-scrollbar {{
         width: 6px;
     }}
@@ -252,7 +213,6 @@ st.markdown(f"""
     }}
 </style>
 """, unsafe_allow_html=True)
-
 
 # BANNER AYRA - SIMPLE TENGAH
 st.markdown("""

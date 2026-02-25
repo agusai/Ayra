@@ -255,19 +255,19 @@ st.markdown(f"""
 
 
 # BANNER AYRA - SIMPLE TENGAH
-    st.markdown("""
-    <div class="banner-ayra">
-        <h1>AYRA</h1>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<div class="banner-ayra">
+    <h1>AYRA</h1>
+</div>
+""", unsafe_allow_html=True)
 
 # GREETING
-    greeting_msg = get_greeting()
-    st.markdown(f"""
-    <div class="greeting-box">
-        {greeting_msg}
-    </div>
-    """, unsafe_allow_html=True)
+greeting_msg = get_greeting()
+st.markdown(f"""
+<div class="greeting-box">
+    {greeting_msg}
+</div>
+""", unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:

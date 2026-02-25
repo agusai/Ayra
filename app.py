@@ -484,7 +484,7 @@ if prompt := st.chat_input("Type your message..."):
 
         if not st.session_state.fatigue and len(st.session_state.last_activity) >= 5:
             time_window = st.session_state.last_activity[-1] - st.session_state.last_activity[-5]
-            if time_window < 120:  # 5 messages in 2 minutes
+            if time_window < 120:  # 50 messages in 2 minutes
                 st.session_state.fatigue = True
                 st.session_state.fatigue_until = now + 300
                 response = "AYRA: Kejap eh awak, Ayra nak 'recharge' jap. awak pun pergilah rehat, asyik tengok skrin jer!"

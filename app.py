@@ -43,173 +43,226 @@ st.set_page_config(page_title="AYRA - Soulful Malaysian AI", page_icon="✨")
 
 st.markdown(f"""
 <style>
-    /* ===== MIDNIGHT GOLD & COSMIC SOUL ===== */
+    /* ===== SIMPLE & CLEAN LIKE WHATSAPP ===== */
     
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
+    /* BACKGROUND PUTIH BERSIH */
     .stApp {{
-        background-color: #0F1A24 !important;
-        background-image: 
-            radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 30%),
-            radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
-            radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 90% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 35%) !important;
+        background-color: #FFFFFF !important;
     }}
 
+    /* GLOBAL TEXT - HITAM */
     * {{
-        font-family: 'Inter', sans-serif !important;
-        color: #FFFFFF !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+        color: #000000 !important;
     }}
 
+    /* BANNER AYRA - SIMPLE */
     .banner-ayra {{
         text-align: center;
-        margin: 20px auto 5px auto;
+        margin: 20px auto 10px auto;
     }}
 
     .banner-ayra h1 {{
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
-        font-weight: 800 !important;
-        font-size: 2.5rem !important;
-        background: linear-gradient(135deg, #FFD700, #FFFFFF) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-clip: text !important;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
-        letter-spacing: 1px !important;
+        font-weight: 700 !important;
+        font-size: 2.2rem !important;
+        color: #000000 !important;
         margin-bottom: 5px !important;
     }}
 
+    /* GREETING - SIMPLE */
     .greeting-box {{
-        background: rgba(255, 255, 255, 0.05) !important;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        border-radius: 15px !important;
-        padding: 12px 20px !important;
+        background-color: #F0F0F0 !important;
+        border-radius: 18px !important;
+        padding: 12px 18px !important;
         margin: 10px auto 25px auto !important;
         max-width: 800px !important;
         text-align: center !important;
         font-size: 1rem !important;
-        line-height: 1.5 !important;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+        color: #000000 !important;
     }}
 
+    /* SIDEBAR - BACKGROUND PUTIH */
     [data-testid="stSidebar"] {{
-        background-color: rgba(10, 15, 20, 0.95) !important;
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(255, 215, 0, 0.2) !important;
+        background-color: #F5F5F5 !important;
+        border-right: 1px solid #E0E0E0 !important;
+        padding: 20px 15px !important;
     }}
 
     [data-testid="stSidebar"] * {{
-        color: #FFFFFF !important;
+        color: #000000 !important;
     }}
 
-    .stMetric {{
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 215, 0, 0.2) !important;
-        border-radius: 15px !important;
-        padding: 12px !important;
-        margin: 8px 0 !important;
-        backdrop-filter: blur(5px);
-    }}
-
-    .stMetric label {{
-        color: #FFD700 !important;
-        font-size: 0.75rem !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 {{
+        color: #000000 !important;
         font-weight: 600 !important;
     }}
 
+    /* METRIC CARDS - SEPERTI WHATSAPP */
+    .stMetric {{
+        background-color: #FFFFFF !important;
+        border: 1px solid #E0E0E0 !important;
+        border-radius: 12px !important;
+        padding: 12px !important;
+        margin: 8px 0 !important;
+    }}
+
+    .stMetric label {{
+        color: #666666 !important;
+        font-size: 0.8rem !important;
+        font-weight: 500 !important;
+        text-transform: uppercase !important;
+    }}
+
     .stMetric [data-testid="stMetricValue"] {{
-        color: #FFFFFF !important;
+        color: #000000 !important;
         font-size: 1.5rem !important;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
         line-height: 1.2 !important;
     }}
 
+    /* UNCLE JIJI'S SECTION */
+    [data-testid="stSidebar"] .stSubheader {{
+        color: #000000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        margin-top: 20px !important;
+    }}
+
+    [data-testid="stSidebar"] code {{
+        background-color: #F0F0F0 !important;
+        color: #000000 !important;
+        border: 1px solid #E0E0E0 !important;
+        border-radius: 8px !important;
+        padding: 8px 12px !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        white-space: pre-wrap !important;
+        margin: 10px 0 !important;
+    }}
+
+    [data-testid="stSidebar"] .stCaption {{
+        color: #666666 !important;
+        font-size: 0.85rem !important;
+        font-style: italic !important;
+    }}
+
+    /* UPLOAD SECTION */
+    .streamlit-expanderHeader {{
+        color: #000000 !important;
+        background-color: #F0F0F0 !important;
+        border-radius: 8px !important;
+    }}
+
+    .streamlit-expanderContent {{
+        background-color: #F9F9F9 !important;
+        border-radius: 0 0 8px 8px !important;
+        padding: 15px !important;
+    }}
+
+    /* CHAT MESSAGES - LIKE WHATSAPP */
     .stChatMessage {{
-        background: rgba(255, 255, 255, 0.05) !important;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        border-radius: 20px !important;
-        padding: 12px 16px !important;
-        margin-bottom: 12px !important;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
+        background-color: #F0F0F0 !important;
+        border-radius: 18px !important;
+        padding: 10px 15px !important;
+        margin-bottom: 8px !important;
+        max-width: 80% !important;
     }}
 
     .stChatMessage * {{
-        color: #FFFFFF !important;
+        color: #000000 !important;
         font-size: 1rem !important;
-        line-height: 1.5 !important;
+        line-height: 1.4 !important;
     }}
 
     .stChatMessage[data-testid="user"] {{
-        border-left: 4px solid #FFD700 !important;
+        background-color: #DCF8C6 !important;
+        margin-left: auto !important;
+        border-bottom-right-radius: 4px !important;
     }}
 
     .stChatMessage[data-testid="assistant"] {{
-        border-right: 4px solid #FFD700 !important;
+        background-color: #F0F0F0 !important;
+        margin-right: auto !important;
+        border-bottom-left-radius: 4px !important;
     }}
 
+    /* INPUT BOX - FLOATING */
     .stChatInputContainer {{
         position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        background: rgba(15, 26, 36, 0.95) !important;
-        backdrop-filter: blur(10px);
+        background-color: #FFFFFF !important;
+        border-top: 1px solid #E0E0E0 !important;
         padding: 12px 15px !important;
-        border-top: 1px solid rgba(255, 215, 0, 0.2) !important;
         z-index: 999 !important;
     }}
 
     .stChatInputContainer input {{
-        background: rgba(255, 255, 255, 0.1) !important;
-        color: #FFFFFF !important;
-        border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        border-radius: 30px !important;
-        padding: 12px 20px !important;
-        font-size: 1rem !important;
-        backdrop-filter: blur(5px);
-    }}
-
-    .stChatInputContainer input:focus {{
-        border-color: #FFD700 !important;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3) !important;
-    }}
-
-    .stButton button {{
-        background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+        background-color: #F0F0F0 !important;
         color: #000000 !important;
-        font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        border: none !important;
-        border-radius: 25px !important;
-        padding: 8px 20px !important;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
-        transition: all 0.3s ease !important;
+        border: 1px solid #E0E0E0 !important;
+        border-radius: 20px !important;
+        padding: 10px 15px !important;
+        font-size: 1rem !important;
+    }}
+
+    /* BUTTONS */
+    .stButton button {{
+        background-color: #F0F0F0 !important;
+        color: #000000 !important;
+        border: 1px solid #E0E0E0 !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
+        font-weight: 500 !important;
     }}
 
     .stButton button:hover {{
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5) !important;
+        background-color: #E0E0E0 !important;
     }}
 
+    /* FEEDBACK LINK */
+    [data-testid="stSidebar"] a {{
+        color: #000000 !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid #E0E0E0 !important;
+    }}
+
+    [data-testid="stSidebar"] a:hover {{
+        border-bottom-color: #000000 !important;
+    }}
+
+    /* PUBLIC TESTING NOTICE */
+    .stAlert {{
+        background-color: #F0F0F0 !important;
+        border: 1px solid #E0E0E0 !important;
+        border-radius: 8px !important;
+        color: #000000 !important;
+    }}
+
+    /* DIVIDER */
+    hr {{
+        border: none !important;
+        border-top: 1px solid #E0E0E0 !important;
+        margin: 15px 0 !important;
+    }}
+
+    /* SCROLLBAR */
     ::-webkit-scrollbar {{
         width: 6px;
     }}
 
     ::-webkit-scrollbar-track {{
-        background: rgba(255, 255, 255, 0.05);
+        background: #F0F0F0;
     }}
 
     ::-webkit-scrollbar-thumb {{
-        background: rgba(255, 215, 0, 0.3);
+        background: #C0C0C0;
         border-radius: 3px;
     }}
 
     ::-webkit-scrollbar-thumb:hover {{
-        background: rgba(255, 215, 0, 0.5);
+        background: #A0A0A0;
     }}
 </style>
 """, unsafe_allow_html=True)
